@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylelink %} 
+   <link rel="stylesheet" href="{% static 'user/css/style.css' %}"> 
+{% endblock stylelink %}
+
+{% block title %}Login Area{% endblock title %}
+
+{% block content %}
+   <div class="login-form">
+      {% if form.errors %}
+         <small>Wrong Creds</small>
+      {% endif %}
+      <form method="post">
+         {% csrf_token %}
+         {{form.as_p}}
+         <p><input type="submit" value="Login"></p>
+      </form>
+   </div>
+{% endblock content %}
